@@ -1,0 +1,13 @@
+body,html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #60a3bc ;
+}
+
+.brand_logo{
+    position: absolute;
+    height: 150px;
+    width: 150px;
+}
+
