@@ -2,12 +2,60 @@ body,html {
     margin: 0;
     padding: 0;
     height: 100%;
+   
     background: #60a3bc ;
 }
+.user_card{
+    height: 400px;
+    width: 350px;
+    background: #f39c12;
+    margin-top: 10% ;
+    margin-bottom: auto;
+    background: #f39c12;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+   border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 1px solid #0d0c0d;
+    
 
+}
 .brand_logo{
-    position: absolute;
+    margin-top: auto;
     height: 150px;
     width: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+
 }
+
+    .brand_logo_container {
+        position:absolute;
+        height: 170px;
+        width: 170px;
+        top: -75px;
+        border-radius: 50%;
+        background: #60a3bc;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .form_container {
+        margin-top: 60px;
+    }
+    .login_btn {
+        width: 100%;
+        background: #c0392b ;
+        color: white ;
+    }
+
+    .login_container {
+        
+        padding: 0 2rem;
+    }
+  
 
