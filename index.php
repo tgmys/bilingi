@@ -1,12 +1,17 @@
-<!DOCTYPE html>
+<?php
 
+require_once './obsluga_sesji.php';
+if($_SESSION['zalogowany']==TRUE)
+    header('Location: login.php');
+exit();
+?>
+<!DOCTYPE html>
 <html lang="pl">
     <head>
         <title>Panel logowania</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-        <link href="glyphicons/_glyphicons.css" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">       
+        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
     </head>
@@ -47,3 +52,5 @@
         </div>
     </body>
 </html>
+
+

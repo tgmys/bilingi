@@ -1,18 +1,14 @@
-<?php   include 'header.php';  ?> 
+<?php   include 'header.html';  ?> 
 
 <body >
 
 <div class="container">
-	<?php   include 'menuadmina.php';  ?> 	
+	<?php $page = 'n_abonent'; include_once 'menuadmina.html';  ?> 	
 
 	<div class="page-header">
 		<h1>Panel administratora - dodaj abonenta
 	</div>		
-	   
-		
-	
-	
-			
+					
 <!-- #BODY POCZĄTEK -->	
 <form method="post" action="n_abonent.php">
 
