@@ -1,9 +1,11 @@
 <?php
 
-require_once './obsluga_sesji.php';
-if($_SESSION['zalogowany']==TRUE)
-    header('Location: login.php');
+session_start();
+if( isset($_SESSION['zalogowany']) && $_SESSION['zalogowany'] == TRUE)
+{
+   header('Location: user.php');
 exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pl">

@@ -3,7 +3,7 @@
 <body>
     
     <div class="container">
-        <?php include_once './menuadmina.html'; ?>
+        <?php include_once './menuadmina.php'; ?>
     </div>
 </body>
 

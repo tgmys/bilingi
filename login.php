@@ -1,22 +1,11 @@
 <?php
-require_once './obsluga_sesji.php';
-
-require_once './database.php';
-
-//require_once './index.html';
-/*
-    $tmp = $strt->fetch(PDO::FETCH_ASSOC);
-    var_dump($tmp);
-    $strt->closeCursor();
-*/
-
-
-//$sr= $db ->query("select* from uzytkownicy")  ;
-//var_dump($sr);
 
 
 
+
+//isset($_POST['email']) && isset($_POST['pass'])
 if (isset($_POST['email']) && isset($_POST['pass'])){
+   require_once './database.php'; 
    // $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
    $st = $db->prepare("select * from uzytkownicy where email = ? and haslo =?;");
             $em=$_POST['email'];
@@ -25,17 +14,19 @@ if (isset($_POST['email']) && isset($_POST['pass'])){
         $st->bindParam(2, $pas);
         
         $st->execute();
-        $tmp = $st->fetchAll();
+        $tmp = $st->fetch(PDO::FETCH_ASSOC);
       
-        var_dump($tmp);
-        $dsg=$tmp[0];
-        echo $dsg;
-        if(count($tmp) > 0){
-            echo "User verified, Access granted.";
-            $_SESSION['id']=$st('');
-        } else {
-            echo "Incorrect username or password";
-        }
+     
+        if(count($tmp['id_uz']) > 0){
+           require_once './obsluga_sesji.php';
+         
+           $_SESSION['co']=$tmp;
+            $_SESSION['id_uz']=$tmp['id_uz'];
+             header('Location: user.php');
+        }else {
+    header('Location: index.php');
+        exit();}
+        
 } else {
     header('Location: index.php');
     exit();

@@ -3,7 +3,7 @@
 <body >
 
 <div class="container">
-	<?php $page = 'n_abonent'; include_once 'menuadmina.html';  ?> 	
+	<?php $page = 'n_abonent'; include_once 'menuadmina.php'; include_once './database.php'; ?> 	
 
 	<div class="page-header">
 		<h1>Panel administratora - dodaj abonenta
