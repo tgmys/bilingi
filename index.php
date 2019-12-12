@@ -16,6 +16,7 @@ exit();
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
+        
     </head>
     <body>
 
@@ -47,8 +48,14 @@ exit();
                                     <input type="submit" name="submit" class="btn login_btn" value="Login"/>
 				</div>
                             </form>
+                            
                         </div>
-                   
+                    
+                    <div class="d-flex justify-content-center form-text">
+                   <?php  if(isset($_SESSION['blad']))
+                             echo $_SESSION['blad']; 
+                            ?>
+                </div>
                 </div>
             </div>
         </div>

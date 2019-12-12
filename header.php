@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="pl" >
 <head>
 	<link rel="shortcut icon" href="img/favicon.ico">

@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 //isset($_POST['email']) && isset($_POST['pass'])
 if (isset($_POST['email']) && isset($_POST['pass'])){
    require_once './database.php'; 
@@ -15,17 +12,20 @@ if (isset($_POST['email']) && isset($_POST['pass'])){
         
         $st->execute();
         $tmp = $st->fetch(PDO::FETCH_ASSOC);
-      
+       
      
         if(count($tmp['id_uz']) > 0){
            require_once './obsluga_sesji.php';
-         
+           unset($_SESSION['blad']);
            $_SESSION['co']=$tmp;
             $_SESSION['id_uz']=$tmp['id_uz'];
-             header('Location: user.php');
+             header('Location: user_1.php');
         }else {
+           session_start();
+            $_SESSION['blad']= '<span style="color:red">Nieprawidłowy email lub hasło!</span>';
     header('Location: index.php');
-        exit();}
+        exit();
+        }
         
 } else {
     header('Location: index.php');
