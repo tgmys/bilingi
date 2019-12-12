@@ -3,8 +3,13 @@ session_start();
 include_once 'header.php';
 require_once './database.php';
 $id_us=$_SESSION['id_uz'];
-$user= $db->query("select * from uzytkownicy where id_uz='$id_us';");
-$user=$user->fetch(PDO::FETCH_ASSOC);
+$user= $db->query("select imie,nazwisko from uzytkownicy");// where id_uz='$id_us';");
+$num=$db->query("select data, godzina_polaczenia, czas_trwania_polaczenia, polaczenia.numer_telefonu, nr_tel.numer_telefonu from uzytkownicy inner join nr_tel on nr_tel.id_uz=uzytkownicy.id_uz inner join polaczenia on nr_tel.id_tel=polaczenia.id_tel  where uzytkownicy.id_uz='$id_us';
+");
+$num=$num->fetch(PDO::FETCH_ASSOC);
+//$user=$user->fetch(PDO::FETCH_ASSOC);
+//$bili=$db->query("select ");
+var_dump($num);
 ?> 
 
 <body >
@@ -16,7 +21,7 @@ $user=$user->fetch(PDO::FETCH_ASSOC);
  <nav class="navbar navbar-inverse  navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-        <a class="navbar-brand" href="#"><?php echo $user['imie'] ," ", $user['nazwisko'] ;  ?></a>
+        <p class="navbar-brand" ><?php foreach ($user as $row) {echo $row['imie'];}  ?></p>
     </div>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php">wyloguj się</a></li>
@@ -31,9 +36,19 @@ $user=$user->fetch(PDO::FETCH_ASSOC);
  <div class="page-header">
     <h1>Panel usera </h1>
  </div>		
-	   
+	
+<nav class="row navbar navbar-light">
+    <div class="container">
+        <h3> Numery telefonów : </h3>
+        <ul class="nav navbar-nav navbar-right">
+            <?php foreach ($user as $row) 
+                {echo '<li> $row["imie"]</li> '; }?>
+    </ul>
+        foreach ($user as $row) {echo $row['imie'];}
+    </div>
+</nav>
  <div class="row">
-	<h1>wiersz 1
+	<h1>
  </div>	
 	
  <div class="row">
