@@ -3,13 +3,14 @@ session_start();
 include_once 'header.php';
 require_once './database.php';
 $id_us=$_SESSION['id_uz'];
-$user= $db->query("select imie,nazwisko from uzytkownicy");// where id_uz='$id_us';");
-$num=$db->query("select data, godzina_polaczenia, czas_trwania_polaczenia, polaczenia.numer_telefonu, nr_tel.numer_telefonu from uzytkownicy inner join nr_tel on nr_tel.id_uz=uzytkownicy.id_uz inner join polaczenia on nr_tel.id_tel=polaczenia.id_tel  where uzytkownicy.id_uz='$id_us';
+$user= $db->query("select imie,nazwisko from uzytkownicy where id_uz='$id_us';"); 
+$num=$db->query("select data, godzina_polaczenia, czas_trwania_polaczenia, polaczenia.numer_telefonu tr , nr_tel.numer_telefonu as rt "
+        . "from uzytkownicy inner join nr_tel on nr_tel.id_uz=uzytkownicy.id_uz left join polaczenia on nr_tel.id_tel=polaczenia.id_tel  where uzytkownicy.id_uz='$id_us';
 ");
-$num=$num->fetch(PDO::FETCH_ASSOC);
-//$user=$user->fetch(PDO::FETCH_ASSOC);
+//$num=$num->fetch(PDO::FETCH_ASSOC);
+$user=$user->fetch(PDO::FETCH_ASSOC);
 //$bili=$db->query("select ");
-var_dump($num);
+//var_dump($num);
 ?> 
 
 <body >
@@ -21,7 +22,7 @@ var_dump($num);
  <nav class="navbar navbar-inverse  navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-        <p class="navbar-brand" ><?php foreach ($user as $row) {echo $row['imie'];}  ?></p>
+        <p class="navbar-brand" ><?php echo $user['imie'],' ',$user['nazwisko']; ?></p>
     </div>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php">wyloguj się</a></li>
@@ -40,11 +41,9 @@ var_dump($num);
 <nav class="row navbar navbar-light">
     <div class="container">
         <h3> Numery telefonów : </h3>
-        <ul class="nav navbar-nav navbar-right">
-            <?php foreach ($user as $row) 
-                {echo '<li> $row["imie"]</li> '; }?>
+        <ul class="nav navbar-nav navbar-left">
+          <?php $num1=array(); echo ' <li>'; foreach ($num as $row1) { if($row1['rt']!=$num1){ echo $row1['rt'], ' '; $num1=$row1['rt'];}} echo' </li>';var_dump($num1); ?>
     </ul>
-        foreach ($user as $row) {echo $row['imie'];}
     </div>
 </nav>
  <div class="row">
