@@ -1,32 +1,10 @@
-<!doctype html>
-<html lang="pl" class="no-js">
-<head>
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
- 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-	<style type="text/css">
-		body {
-				padding-top: 70px;
-				padding-bottom: 70px;
-			 }
-	</style>
-</head>
+<?php include_once 'header.php'; ?> 
 <body>
  
 <div class="container">	
-	<div>
-					
-	<form>	
-	<select>	
-		<option> tutaj co  </option>
-	</select>
-	</form>
-				
-			
+    <?php $page = 'w_pliku'; include_once './menuadmina.php'; ?>
+	
+							
 <?php
 require_once './database.php';
 
@@ -146,10 +124,10 @@ require_once './database.php';
 <H2> koniec </H2>
 		
 	
-			</div>
+		
 		</div>	
 
 </body>
-</html>
+
 	
 	

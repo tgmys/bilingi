@@ -16,6 +16,7 @@ $user=$user->fetch(PDO::FETCH_ASSOC);
 //$bili=$db->query("select ");
 //var_dump($num);
 $num->execute();
+$i=0;
 ?> 
 
 <body >
@@ -76,38 +77,53 @@ $num->execute();
 	
 <div class="row">
 	<h1> dane z bazy wiersz 3</h1>
-	<?php
-	$_POST['imie']="Janek";
-	$_POST['nazwisko']="Kowalski";
-	$_POST['nr_telefonu']="5423415413";
+      <table class="table table-bordered table-striped">
 	
-	echo '<table class="table table-striped">
+	
+
 		  <thead>
 			<tr>
-                        
+                        <th>#</th>
 				<th>kierunek_polaczenia</th>
 				<th>data</th>
 				<th>godzina_polaczenia </th>
                                 <th>czas_trwania_polaczenia </th>
                                 <th>numer telefonu </th>
+                                <th>pokaz</th>
 			</tr>
-		  </thead>';
+		  </thead>
 	
-	echo '<tbody>';
-	
+	<tbody>
+            <p>
+	<?php
         foreach ($bili as $row2)
 	{
 		echo '<tr>
+                    <th scope="row">'.$i.'</th>
 				<td>'. $row2['kierunek_polaczenia'] .'</td> 
 				<td>'. $row2['data'] .'</td>
 				<td>'. $row2['godzina_polaczenia'] .'</td>
                                 <td>'. $row2['czas_trwania_polaczenia'] .'</td>
 				<td>'. $row2['tr'] .'</td>
+                                <td><a class="btn btn-primary" data-toggle="collapse" href="#ukryta-tresc'.$i.'" aria-expanded="false" aria-controls="ukryta-tresc'.$i.'">
+		Zobacz/ukryj
+		</a></td>
 			</tr>';
+                        
+                        echo '<tr> <td>
+		<div class="collapse" id="ukryta-tresc'.$i.'">
+		<div class="card card-body">
+			To jest treść ukryta o numerze: '.$i.'.
+		</div>
+		</div>
+	</td></tr>';
+                        $i++;
 	}
-    echo   '</tbody>
-		</table>';
-	?>
+        ?>
+            </p>
+   </tbody>
+</table>
+	
 </div>	
 			
 

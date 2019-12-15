@@ -1,40 +1,53 @@
-<?php
-require_once './database.php';
-
-//$lo=$db ->prepare ("insert into polaczenia(id_tel,data,godzina_polaczenia,czas_trwania_polaczenia,kierunek_polaczenia,numer_telefonu) values('1','27.03.18','5:5','0:5','PRZY','73112568');");
-   //$lo -> execute();
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
- 
-</head>
-<body>
-
-<nav class="navbar navbar-default navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
-    </ul>
-  </div>
-</nav>
-  
-<div class="container">
-  <h3>Basic Navbar Example</h3>
-  <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
+<?php include './header.php'; ?>
+<?php   include 'dolo_sp.php'; ?> 
+<H1> Test list rozwijanych  </H1>
+<br /> <br />
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+	  <th>Pokaż</th>
+    </tr>
+  </thead>
+  <tbody>
+	<p>
+	<?php
+	for ($i=1; $i<10; $i++)
+	{
+		
+  	echo '<tr>
+			<th scope="row">'.$i.'</th>
+			<td>Mark</td>
+			<td>Otto</td>
+			<td>@mdo</td>
+			<td><a class="btn btn-primary" data-toggle="collapse" href="#ukryta-tresc'.$i.'" aria-expanded="false" aria-controls="ukryta-tresc'.$i.'">
+		Zobacz/ukryj
+		</a></td>
+    </tr>'; 
+	
+	echo '<tr> <td>
+		<div class="collapse" id="ukryta-tresc'.$i.'">
+		<div class="card card-body">
+			To jest treść ukryta o numerze: '.$i.'.
+		</div>
+		</div>
+	</td></tr>';
+	}
+	?>
+	</p>
+	
+</tbody>
+</table>
+</div>
 </div>
 
-</body>
-</html>
+
+
+</DIV>  
+</DIV>
+</BODY>
+</HTML>
 

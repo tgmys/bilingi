@@ -13,11 +13,15 @@
  
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css.css">
 	<style type="text/css">
 		body 	{
 					padding-top: 70px;
 				}
 	</style>
 
-        <script src="bootstrap/js/bootstrap.min.js"></script>	
+        <script src="js/bootstrap.min.js"></script>	
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/popper.min.js"></script>
 </head>

@@ -3,7 +3,7 @@
 <body>
     
     <div class="container">
-        <?php include_once './menuadmina.php'; ?>
+        <?php $page = 'n_telefon'; include_once './menuadmina.php'; ?>
     </div>
 </body>
 
