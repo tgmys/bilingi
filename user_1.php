@@ -43,24 +43,30 @@ $num->execute();
     <h1>Panel usera </h1>
  </div>		
 	
-<nav class="row navbar navbar-light">
+<nav class="row navbar  navbar-light" style="background-color: #FFFAFA;">
     <div class="container">
-        <h3> Numery telefonów : </h3>
         <ul class="nav navbar-nav navbar-left">
-            
+          
+            <li class="active">
+                <h3> Numery telefonów : </h3>
           <?php 
           $num1=array(); 
           foreach ($num as $row1)
               { 
-              if($row1['rt']!=$num1)
-                  { 
-                  echo ' <li ><a>';
-                  echo $row1['rt'], ' ';
+                  ?>
+            <li class="active" >
+                <?php
+                echo '<a href="user_1.php?action='.$row1['id_tel'].'"><h4>'.$row1['rt'].'</h4></a><br>';
+                          
+                 // echo $row1['rt'], ' ';
                   
-                  $num1=$row1['rt'];}
-              echo'</a> </li>';
+                  $num1=$row1['id_tel']; 
+                  ?> 
+               </li>
+              <?php                var_dump($num1);
               }
               ?>
+              
     </ul>
     </div>
 </nav>
