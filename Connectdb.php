@@ -1,5 +1,16 @@
 <?php //include './header.php'; ?>
-<?php  // include 'dolo_sp.php'; ?> 
+<?php  include './database.php';
+
+  
+        $dam='2018-03-27';
+        $bili=$db->query("select kierunek_polaczenia, data, godzina_polaczenia, czas_trwania_polaczenia, polaczenia.numer_telefonu tr , nr_tel.numer_telefonu as rt "
+        . "from  nr_tel left join polaczenia on nr_tel.id_tel=polaczenia.id_tel  where id_uz=1;");
+        $bili=$bili->fetch(PDO::FETCH_ASSOC);
+        $bili122=$db->query("select kierunek_polaczenia, godzina_polaczenia, czas_trwania_polaczenia, polaczenia.numer_telefonu tr , nr_tel.numer_telefonu as rt "
+        . "from  nr_tel left join polaczenia on nr_tel.id_tel=polaczenia.id_tel  where id_uz=1 and data=".$bili['data'].";");
+        $bili11=mktime($bili122->fetch(PDO::FETCH_ASSOC));
+        mktime($bili11);
+      //  select kierunek_polaczenia, data from  nr_tel left join polaczenia on nr_tel.id_tel=polaczenia.id_tel?> 
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">  
 <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.min.css">
 <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.min.css">
@@ -21,6 +32,17 @@
   <tbody>
 	<p>
 	<?php
+        $dam='2018-03-27';
+        $bili=$db->query("select kierunek_polaczenia, data, godzina_polaczenia, czas_trwania_polaczenia, polaczenia.numer_telefonu tr , nr_tel.numer_telefonu as rt "
+        . "from  nr_tel left join polaczenia on nr_tel.id_tel=polaczenia.id_tel  where id_uz=1 and data=2018-03-27;");
+      //  select kierunek_polaczenia, data from  nr_tel left join polaczenia on nr_tel.id_tel=polaczenia.id_tel  where id_uz=1 and data='2018-03-27';
+foreach ($bili122 as $row12){
+    echo '<tr>
+			<th scope="row">'.$row12['data'].'</th>
+			
+        
+        </tr>';
+}
 	for ($i=1; $i<10; $i++)
 	{
 		

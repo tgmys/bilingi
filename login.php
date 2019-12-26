@@ -19,7 +19,11 @@ if (isset($_POST['email']) && isset($_POST['pass'])){
            unset($_SESSION['blad']);
            $_SESSION['co']=$tmp;
             $_SESSION['id_uz']=$tmp['id_uz'];
-             header('Location: user_1.php');
+            $id_us=$tmp['id_uz'];
+            $num=$db->query("select id_tel from  nr_tel  where id_uz='$id_us';
+");
+             $num = $num->fetch(PDO::FETCH_ASSOC);
+             header('Location: user_3.php?action='.$num['id_tel']);
         }else {
            session_start();
             $_SESSION['blad']= '<span style="color:red">Nieprawidłowy email lub hasło!</span>';

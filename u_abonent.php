@@ -1,25 +1,21 @@
-<?php include './header.php'; ?>
+<?php include_once 'header.php'; ?> 
 
-<body>
-    
+<body >
+
     <div class="container">
+        <?php
+        $page = 'u_abonent';
+        include_once 'menuadmina.php';
+        include_once './database.php';
         
-
-        <?php $page = 'n_telefon'; include_once './menuadmina.php'; 
- include_once './database.php';
- 
- 	require_once './database.php';
+		require_once './database.php';
         $u_abo=$db ->query ("select id_uz, imie, nazwisko from uzytkownicy;");
 						
 		?>
-        <div class="container page-header">
-            <h1>Panel administratora - dodanie telefonu
+        <div class="page-header">
+            <h1>Panel administratora - usuń abonenta
         </div>		
-         <div class="form-group">
-                <label for="Nr telefonu">Nr telefonu</label>
-                <input type="text" class="form-control" id="nr_telefonu" name="nr_telefonu" aria-describedby="podpowiedz" placeholder="Wpisz nr telefonu">
-                <small id="nazwisko" class="form-text text-muted">W powyższym polu wpisujesz nowy numer telefonu abonenta.</small>
-            </div>
+
         <!-- #BODY POCZĄTEK -->	
         <form method="post" action="u_abonent.php">
 
@@ -37,7 +33,7 @@
 			</div>
 			
 			<div class="form-group col-md-8">
-				<button type="submit" class="btn btn-primary">Dodaj</button>
+				<button type="submit" class="btn btn-primary">Wyślij</button>
 			</div>
 			
         </form>
@@ -76,12 +72,14 @@
          </tbody>
 		</table>';
             $_POST = []; //czyszczenie tablicy POST by nie powielać tych samych danych
-        } 
+        } else {
+            echo '<h3> Usuń abonenta </h3>';
+        }
         ?>	
         
+        	
+
     </div>
+
 </body>
-
-
-
 
