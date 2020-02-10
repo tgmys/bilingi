@@ -12,7 +12,8 @@
             <li class="<?php if($page == 'n_abonent'){echo 'active';} ?>"><a href="n_abonent.php">Nowy abonent</a></li>
             <li class="<?php if($page == 'u_abonent'){echo 'active';} ?>"><a href="u_abonent.php">Usuń abonenta</a></li>
             <li class="<?php if($page == 'n_telefon'){echo 'active';} ?>"><a href="n_telefon.php">Nowy telefon</a></li>
-            <li class="<?php if($page == 'w_pliku'){echo 'active';} ?>"><a href="wybor_pliku.php">Aktulizacja bilingów</a></li>
+            <li class="<?php if($page == 'w_pliku'){echo 'active';} ?>"><a href="wybor_pliku2.php">Dodanie bilingów</a></li>
+            <li class="<?php if($page == 'w_pliku'){echo 'active';} ?>"><a href="przypis.php">przypis</a></li>
         </ul>
     </div>
 </nav>	

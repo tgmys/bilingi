@@ -1,4 +1,9 @@
-﻿<!doctype html>
+<?php
+
+$hash = hash('sha512', 'kowal') ;
+echo $hash;
+
+?>
 <html lang="pl" class="no-js">
 <head>
 <!-- meta character set -->
@@ -46,7 +51,7 @@
 		{
 			$ile1 = count($_POST['nazwa']);
 			$ile2 = $_POST['wybor_abonenta'];
-			
+			$co= $_POST['nazwa'];
 		}
 		
 	  
@@ -55,7 +60,26 @@
 	
 	
   // Akcja przypisywania zaznaczonych rekordów (unikatowych) do tabeli polacz	//Post tabela z unikatowymi numerów abonenta
-  
+          if(isset($_POST['nazwa']) && isset($_POST['wybor_abonenta']) )
+  foreach ($_POST['nazwa'] as $p)
+  {
+      echo "$p";
+      
+      try
+			{
+				$add = $db -> 	query	("INSERT INTO polacz
+										(id_tel, id_bili)
+										VALUES 
+										('$ile2', '$pom');
+										");
+			}
+	
+			catch (Exception $e)
+			{
+				$komunikat.= 'Błąd dla bilingu:  ' . $pom . ' <br />';
+			}	
+			
+  }
                 
 //	if ($ile1 > 0 && $ile2 > 0 ) 
 //	{	
@@ -101,16 +125,16 @@
 			try
 			{
 		
-				$add1 = $db -> query	("INSERT INTO polaczenia
-							(id_bili, data, godzina_polaczenia, czas_trwania_polaczenia, kierunek_polaczenia, numer_telefonu)
-							VALUES 
-							('$p[1]', '$p[2]', '$p[3]', '$p[4]', '$p[5]', '$p[6]');
-							");
-				
-				if($add1)
-				{
-					$kasuj = $db -> query ("DELETE FROM nie_przyp WHERE id_p='$p[0]'");
-				}
+//				$add1 = $db -> query	("INSERT INTO polaczenia
+//							(id_bili, data, godzina_polaczenia, czas_trwania_polaczenia, kierunek_polaczenia, numer_telefonu)
+//							VALUES 
+//							('$p[1]', '$p[2]', '$p[3]', '$p[4]', '$p[5]', '$p[6]');
+//							");
+//				
+//				if($add1)
+//				{
+//					$kasuj = $db -> query ("DELETE FROM nie_przyp WHERE id_p='$p[0]'");
+//				}
 			
 			}
 	
@@ -134,7 +158,7 @@
 
   // Formularz z polem select - dane z tabeli nie_przyp
        
-	echo '<form class="form-inline" role="form" method="POST" action="przypis.php"> 
+	echo '<form class="form-inline" role="form" method="POST" action="testy.php"> 
 		<select id= "se" multiple name="nazwa[]" size="15">';
 		
 		foreach ($lista_nieprzyp as $linia)

@@ -39,19 +39,6 @@
 		$komunikat ='';
 		
 		error_reporting(E_ALL ^ E_NOTICE);
-	// Pomocnicza tabeloa POST - dane kontrolne
-		/*
-		error_reporting(E_ALL ^ E_NOTICE);
-		echo '<pre>';
-		print_r($_POST);
-		//echo 'wielkosc: '.count($_POST['nazwa']);
-		echo '<HR>';
-		print_r($_FILES);
-		echo '</pre><HR>';
-		echo '</div></div class="row">';
-		*/
-	// Koniec tablicy kontrolnej
-	
   
 	// Nowy wiersz w kontenerze
 	echo '<div class="row"> <div>';
@@ -72,7 +59,7 @@
 	
   // Tworzenie tabeli pomocniczej - "bilingi[]" - z rekordami id_bili
 	$a = 0;
-	$lista_bili = $db -> query('select id_bili from polacz;');
+	$lista_bili = $db -> query('select id_bili from polacz;');               // nie potrzebne
 	foreach($lista_bili as $b)
 	  {
 		$bilingi[$a] = $b[0];
