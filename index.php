@@ -1,11 +1,11 @@
 <?php
-
 session_start();
-if( isset($_SESSION['zalogowany']) && $_SESSION['zalogowany'] == TRUE)
-{
-   header('Location: user.php');
-exit();
-}
+if(isset($_SESSION['zalogowany']) && $_SESSION['zalogowany']==TRUE){
+     header('Location: user_3.php?action='.$_SESSION['id_tel']);  
+}elseif (isset ($_SESSION['zalogowany_adm']) && $_SESSION['zalogowany_adm']==TRUE) {
+     header('Location: n_abonent.php');
+    
+} 
 ?>
 <!DOCTYPE html>
 <html lang="pl">

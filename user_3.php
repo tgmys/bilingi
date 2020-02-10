@@ -1,21 +1,23 @@
 <?php 
-session_start();
-include_once 'header.php';
-require_once './database.php';
-$id_us=$_SESSION['id_uz'];
-$user= $db->query("select imie,nazwisko from uzytkownicy where id_uz='$id_us';"); 
+//session_start();
+
+include './menuuser.php';
 $num=$db->query("select id_tel, numer_telefonu rt from  nr_tel  where id_uz='$id_us';
 ");
-$bili=$db->query("select kierunek_polaczenia, data, godzina_polaczenia, czas_trwania_polaczenia, polaczenia.numer_telefonu tr , nr_tel.numer_telefonu as rt "
-        . "from  nr_tel left join polaczenia on nr_tel.id_tel=polaczenia.id_tel  where id_uz='$id_us'and polaczenia.id_tel='$_GET[action]';
+
+$bili=$db->query("select kierunek_polaczenia, data, godzina_polaczenia, czas_trwania_polaczenia, polaczenia.numer_telefonu tr , nr_tel.numer_telefonu as rt" 
+       ." from nr_tel left join polacz on nr_tel.id_tel=polacz.id_tel join "
+        . "polaczenia on polacz.id_bili = polaczenia.id_bili where nr_tel.id_uz='$id_us' and nr_tel.id_tel='$_GET[action]' ;
 ");
-$dat=$db->query("select data, count(id_p) ilosc from  nr_tel left join polaczenia on nr_tel.id_tel=polaczenia.id_tel"
-        . " where id_uz='$id_us' and nr_tel.id_tel='$_GET[action]' group by data;");
+
+$dat=$db->query("select data, count(id_p) ilosc from nr_tel join polacz on nr_tel.id_tel = polacz.id_tel join polaczenia on polacz.id_bili = polaczenia.id_bili "
+        . "where id_uz='$id_us' and nr_tel.id_tel='$_GET[action]' group by data;");
+
 $dat1=$dat->fetch(PDO::FETCH_ASSOC);
 
 $tel_ids=$num->fetch(PDO::FETCH_ASSOC);
 $tel_id=$tel_ids['id_tel'];
-$user=$user->fetch(PDO::FETCH_ASSOC);
+
 //$bili=$db->query("select ");
 //var_dump($dat1);
 $dat->execute();
@@ -29,16 +31,7 @@ $i=0;
 
 <!-- #MENU USERA -->	
 
- <nav class="navbar navbar-inverse  navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-        <p class="navbar-brand" ><?php echo $user['imie'],' ',$user['nazwisko']; ?></p>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
-        <li><a href="logout.php">wyloguj się</a></li>
-    </ul>
-  </div>
-</nav>	 
+ 
 
 <!-- #KONIEC MENU USERA -->	
 
@@ -54,10 +47,7 @@ $i=0;
           
             <li class="active">
                 <h3> Numery telefonów : </h3>
-                <?php
-	
-	
-	?>
+
           <?php 
           $num1=array(); 
           foreach ($num as $row1)
@@ -65,7 +55,7 @@ $i=0;
                   ?>
             <li class="active" >
                 <?php
-                echo '<a href="user_3.php?action='.$row1['id_tel'].'"><h4>'.$row1['rt'].'</h4></a><br>';
+                echo '<a href="user_3.php?action='.$row1['id_tel'].'"><h4>'.$row1['rt'].'</h4></a><br>';  //numery telefonu usera
                           
                  // echo $row1['rt'], ' ';
                   
