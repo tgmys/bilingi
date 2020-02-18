@@ -123,7 +123,7 @@ $sth->execute($bilingi);
 
   // Formularz z polem select - dane z tabeli nie_przyp
        
-	echo '<form class="form-inline" role="form" method="POST" action="testy.php"> 
+	echo '<form class="form-inline" role="form" method="POST" action="przypis.php"> 
 		<select id= "se" multiple name="nazwa[]" size="15">';
 		
 		foreach ($lista_nieprzyp as $linia)

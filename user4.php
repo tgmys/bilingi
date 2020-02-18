@@ -46,7 +46,7 @@
                         <?php
                         echo'<select id="se" name="data">';
 
-                        $statement1 = $db->query("select distinct extract(year from data) rok, extract(month from data) miesiac from polaczenia join polacz on polacz.id_bili=polaczenia.id_bili join nr_tel on nr_tel.id_tel=polacz.id_tel where id_uz=1;");
+                        $statement1 = $db->query("select distinct extract(year from data) rok, extract(month from data) miesiac from polaczenia join polacz on polacz.id_bili=polaczenia.id_bili join nr_tel on nr_tel.id_tel=polacz.id_tel where id_uz='$id_us';");
 
                         foreach ($statement1 as $wiersz) {
                             echo '<option>' . $wiersz['rok'] . '-' . $wiersz['miesiac'] . '</option>';

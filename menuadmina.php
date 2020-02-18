@@ -1,5 +1,5 @@
 <?php
-//incle session
+include_once './obsluga_sesji_adm.php';
 ?>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <nav class="navbar navbar-inverse  navbar-fixed-top">

@@ -1,8 +1,13 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+session_start();
+
+if(isset($_SESSION['ip']) && $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'])
+{
+    die('Proba przejecia sesji udaremniona!');
+}elseif ($_SESSION['zalogowany_adm'] == FALSE ) {
+     header('Location: index.php');
+     exit();
+}
+?>
 

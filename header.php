@@ -13,7 +13,7 @@
  
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-  
+   
  <!-- <link rel="stylesheet" href="css/bootstrap-reboot.min.css"> -->
 	<style type="text/css">
 		body 	{

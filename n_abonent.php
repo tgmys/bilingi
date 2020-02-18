@@ -27,6 +27,11 @@
                 <input type="text" class="form-control" id="nazwisko" name="nazwisko" aria-describedby="podpowiedz" placeholder="Wpisz nazwisko">
                 <small id="nazwisko" class="form-text text-muted">W powyższym polu wpisujesz nazwisko abonenta.</small>
             </div>
+            
+            <div class="form-group">
+                <label for="email">email</label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Wpisz email">
+            </div>
 
             <div class="form-group">
                 <label for="Nr telefonu">Nr telefonu</label>
@@ -51,11 +56,12 @@
 
         <?php
         print_r($_POST);
-        if (!empty($_POST['imie']) && !empty($_POST['nazwisko']) && !empty($_POST['haslo']) && !empty($_POST['nr_telefonu'])) {
+        if (!empty($_POST['imie']) && !empty($_POST['nazwisko']) && !empty($_POST['haslo']) && !empty($_POST['nr_telefonu']) && !empty($_POST['email'])) {
 
             require_once './database.php';
-            $db ->query ("insert into uzytkownicy(imie,nazwisko,haslo) values('$id','$data','$godzina','$czas','$rozmowa','$nr_telefonu');");
-					
+            $pas= hash('sha512', $_POST['haslo']);  
+            $db ->query ("insert into uzytkownicy(imie,nazwisko,haslo,email) values($_POST[imie],$_POST[nazwisko],$pas,$_POST[email]);");
+		//zapis num telefonu			
             echo '<table class="table table-bordered">';
             echo '<thead>
 			<tr>

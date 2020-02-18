@@ -6,7 +6,8 @@ if (isset($_POST['email']) && isset($_POST['pass'])){
    $st = $db->prepare("select * from uzytkownicy where email = ? and haslo =?;");
    $st1 = $db->prepare("select * from administrator where email = ? and haslo =?;");
             $em=$_POST['email'];
-        $pas=$_POST['pass'];           
+        $pas= hash('sha512', $_POST['pass']);  
+     
         $st->bindParam(1, $em);
         $st->bindParam(2, $pas);
         $st1->bindParam(1, $em);
