@@ -13,13 +13,13 @@ $bili=$db->query("select kierunek_polaczenia, data, godzina_polaczenia, czas_trw
 $dat=$db->query("select data, count(id_p) ilosc from nr_tel join polacz on nr_tel.id_tel = polacz.id_tel join polaczenia on polacz.id_bili = polaczenia.id_bili "
         . "where id_uz='$id_us' and nr_tel.id_tel='$_GET[action]' group by data;");
 
-$dat1=$dat->fetch(PDO::FETCH_ASSOC);
+$tel=$db->query("select numer_telefonu from nr_tel where id_uz='$id_us' and id_tel='$_GET[action]';");
 
+$dat1=$dat->fetch(PDO::FETCH_ASSOC);
+$tel1=$tel->fetch(PDO::FETCH_ASSOC);
 $tel_ids=$num->fetch(PDO::FETCH_ASSOC);
 $tel_id=$tel_ids['id_tel'];
 
-//$bili=$db->query("select ");
-//var_dump($dat1);
 $dat->execute();
 $num->execute();
 $i=0;
@@ -28,13 +28,6 @@ $i=0;
 <body >
 
 <div class="container">
-
-<!-- #MENU USERA -->	
-
- 
-
-<!-- #KONIEC MENU USERA -->	
-
 	
 <!-- #BODY -->	
  <div class="page-header">
@@ -57,8 +50,6 @@ $i=0;
                 <?php
                 echo '<a href="user_3.php?action='.$row1['id_tel'].'"><h4>'.$row1['rt'].'</h4></a><br>';  //numery telefonu usera
                           
-                 // echo $row1['rt'], ' ';
-                  
                   $num1=$row1['id_tel']; 
                   ?> 
                </li>
@@ -69,12 +60,10 @@ $i=0;
     </ul>
     </div>
 </nav>
- <div class="row">
-	<h1>
- </div>	
+ 
 	
 <div class="row">
-	<h1> dane z bazy wiersz 3</h1>
+    <h2> Połączenia dla: <?php echo  $tel1['numer_telefonu']; ?></h2>
       <table class="table table-bordered table-striped">
 		<thead>
 			<tr>
