@@ -35,7 +35,7 @@
 
             <div class="form-group">
                 <label for="Nr telefonu">Nr telefonu</label>
-                <input type="text" class="form-control" id="nr_telefonu" name="nr_telefonu" aria-describedby="podpowiedz" placeholder="Wpisz nr telefonu">
+                <input type="number" class="form-control" id="nr_telefonu" name="nr_telefonu" aria-describedby="podpowiedz" placeholder="Wpisz nr telefonu">
                 <small id="nazwisko" class="form-text text-muted">W powyższym polu wpisujesz numer telefonu abonenta.</small>
             </div>
 
@@ -55,13 +55,21 @@
 
 
         <?php
-        print_r($_POST);
+      //  print_r($_POST);
         if (!empty($_POST['imie']) && !empty($_POST['nazwisko']) && !empty($_POST['haslo']) && !empty($_POST['nr_telefonu']) && !empty($_POST['email'])) {
-
+            
             require_once './database.php';
             $pas= hash('sha512', $_POST['haslo']);  
-            $db ->query ("insert into uzytkownicy(imie,nazwisko,haslo,email) values($_POST[imie],$_POST[nazwisko],$pas,$_POST[email]);");
-		//zapis num telefonu			
+            try {
+                
+            
+           $q1= $db ->query ("insert into uzytkownicy(imie,nazwisko,haslo,email) values('$_POST[imie]','$_POST[nazwisko]','$pas','$_POST[email]');");
+		$id_uz= $db->query("select id_uz from uzytkownicy where email = '$_POST[email]';");
+                $id_uz = $id_uz->fetch(PDO::FETCH_ASSOC);
+            $q2=$db->query ("insert into nr_tel(id_uz,numer_telefonu) values('$id_uz[id_uz]','$_POST[nr_telefonu]');"); 
+            } catch (Exception $ex) {
+                echo 'błąd';   
+            }
             echo '<table class="table table-bordered">';
             echo '<thead>
 			<tr>

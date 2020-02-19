@@ -21,7 +21,7 @@
 
             <div class="form-group col-md-8">
 				<label for="abonent">Abonent</label>
-				<select id="abonent" class="form-control">
+                                <select id="abonent" name="abonent" class="form-control">
 					<?php
 						foreach ($u_abo as $row)
 						{
@@ -38,47 +38,19 @@
 			
         </form>
         <br /><br />
-        <!-- #KONIEC FORMULARZA -->
-
-
-
-        <!-- #PRZETWARZANIE FORMULARZA I WYPISANIE WPROWADZONYCH DANYCH -->	
-
 
         <?php
-        print_r($_POST);
-        if (!empty($_POST['id_uz'])) 
+        if (!empty($_POST['abonent'])) 
 		{
+            require_once './database.php';
 
-            //require_once './database.php';
-            //$db ->query ("insert into uzytkownicy(imie,nazwisko,haslo) values('$id','$data','$godzina','$czas','$rozmowa','$nr_telefonu');");
-					
-            echo '<table class="table table-bordered">';
-            echo '<thead>
-			<tr>
-				<th>Imię</th>
-				<th>Nazwisko</th>
-				
-			</tr>
-		  </thead>';
-
-            echo '<tbody>
-			<tr>
-				<td>' . $_POST['imie'] . '</td> 
-				<td>' . $_POST['nazwisko'] . '</td>
-				
-				
-			</tr>
-         </tbody>
-		</table>';
+		 $q= $db->query ("delete from uzytkownicy where uzytkownicy.id_uz ='$_POST[abonent]';");			
+           
             $_POST = []; //czyszczenie tablicy POST by nie powielać tych samych danych
-        } else {
-            echo '<h3> Usuń abonenta </h3>';
-        }
+        } 
         ?>	
         
-        	
-
+        
     </div>
 
 </body>

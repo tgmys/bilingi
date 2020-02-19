@@ -45,8 +45,9 @@
  
         $st->bindParam(1, $$_POST['nhas']);
         $st->execute();
+   }else {
+       echo '<span style="color:red">Błąd. Zle powtorzono nowe hasło lub podan zle birzące hasło</span>';
    }
-
     }
     ?>
         </div>

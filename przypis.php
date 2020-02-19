@@ -22,7 +22,8 @@
 
 
 <body>
-<?php include 'menuadmina.php'; ?>
+<?php $page = 'przyp';
+include 'menuadmina.php'; ?>
 
 <div class="container">	
  <div class="row"> 

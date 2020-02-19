@@ -88,7 +88,7 @@
                 ?>
                 <h3>Liczba połączeń wychodzących: <?php echo "$wych"; ?></h3>
                 <h3>Liczba połączeń przychodzących: <?php echo "$przy"; ?></h3>
-                <h1> dane z bazy wiersz 3</h1>   
+                
                 <table class="table table-bordered table-striped">
 
 

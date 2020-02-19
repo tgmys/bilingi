@@ -19,7 +19,8 @@
 
 
 <body>
-<?php include 'menuadmina.php'; ?>
+<?php $page = 'w_pliku';
+include 'menuadmina.php'; ?>
 
 <div class="container">	
  <div class="row"> 
